@@ -1,0 +1,34 @@
+.App-header {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    min-height: 10vh;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+  }
+
+.header-img {
+    width: 100%;
+    height: 25vh;
+    object-fit: cover;
+    object-position: center 60%;
+    display: block;
+    border-radius: 30px;
+    margin: 20px;
+}
+
+.dropbox-container {
+    position: absolute;
+    top: 50%;  /* Move it to the vertical center */
+    right: 20px; /* Keep it towards the right */
+    transform: translateY(-50%); /* Adjust it exactly to the center */
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.genre-dropdown {
+    font-size: 16px;
+    padding: 5px;
+}
