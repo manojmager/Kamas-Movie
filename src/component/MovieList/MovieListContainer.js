@@ -2,7 +2,12 @@ import React from 'react';
 import './Movie-list-container.css';
 
 function MovieListContainer({ movies, selectedGenre }) {
-    const filteredMovies = selectedGenre === "All" ? movies : movies.filter(movie => movie.genre === selectedGenre);
+    // Filter movies correctly based on multi-genre selection
+    const filteredMovies = selectedGenre === "All"
+        ? movies
+        : movies.filter(movie => movie.genres.includes(selectedGenre));
+
+    // Separate movies into "Want to Watch" and "Watched" categories
     const wantToWatch = filteredMovies.filter(movie => !movie.watched);
     const watched = filteredMovies.filter(movie => movie.watched);
 

@@ -1,33 +1,49 @@
 import { useState } from "react";
 import { collection, addDoc } from "firebase/firestore";
-import { firestore } from "../../firebase"; // Ensure correct import
+import { firestore } from "../../firebase";
+import "./add-movie-container.css";
+
+const GENRES = [
+  "Series", "Anime", "Romance", "Comedy", "Drama", 
+  "Thriller", "Horror", "Mystery", "Action", "Sci-Fi", "Fantasy"
+];
 
 function AddMovieContainer({ addMovie }) {
   const [name, setName] = useState("");
-  const [genre, setGenre] = useState("");
+  const [genres, setGenres] = useState([]); // Store multiple genres
   const [watched, setWatched] = useState(false);
+  const [inputValue, setInputValue] = useState(""); // Handle manual input
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    if (!name || !genre) {
-      alert("Please enter both name and genre!");
+    if (!name || genres.length === 0) {
+      alert("Please enter a movie name and select at least one genre!");
       return;
     }
 
-    const newMovie = { name, genre, watched };
+    const newMovie = { name, genres, watched };
 
     try {
       const docRef = await addDoc(collection(firestore, "movies"), newMovie);
       console.log("Document written with ID: ", docRef.id);
-      
-      addMovie({ ...newMovie, id: docRef.id }); // Add to local state as well
+      addMovie({ ...newMovie, id: docRef.id }); // Add to local state
       setName("");
-      setGenre("");
+      setGenres([]);
       setWatched(false);
+      setInputValue("");
     } catch (error) {
       console.error("Error adding document: ", error);
     }
+  };
+
+  const handleAddGenre = (genre) => {
+    if (!genres.includes(genre)) {
+      setGenres([...genres, genre]);
+    }
+  };
+
+  const handleRemoveGenre = (genre) => {
+    setGenres(genres.filter((g) => g !== genre));
   };
 
   return (
@@ -38,12 +54,43 @@ function AddMovieContainer({ addMovie }) {
         value={name}
         onChange={(e) => setName(e.target.value)}
       />
-      <input
-        type="text"
-        placeholder="Genre"
-        value={genre}
-        onChange={(e) => setGenre(e.target.value)}
-      />
+
+      {/* Genre Tag Input */}
+      <div className="genre-tag-container">
+        {genres.map((genre) => (
+          <span key={genre} className="tag">
+            {genre} <button type="button" onClick={() => handleRemoveGenre(genre)}>x</button>
+          </span>
+        ))}
+        <input
+          type="text"
+          placeholder="Type or select a genre..."
+          value={inputValue}
+          onChange={(e) => setInputValue(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.key === "Enter" && inputValue) {
+              e.preventDefault();
+              handleAddGenre(inputValue);
+              setInputValue("");
+            }
+          }}
+        />
+      </div>
+
+      {/* Genre Selection Buttons */}
+      <div className="genre-buttons">
+        {GENRES.map((genre) => (
+          <button
+            type="button"
+            key={genre}
+            className={genres.includes(genre) ? "selected" : ""}
+            onClick={() => handleAddGenre(genre)}
+          >
+            {genre}
+          </button>
+        ))}
+      </div>
+
       <label>
         <input
           type="checkbox"
@@ -52,6 +99,7 @@ function AddMovieContainer({ addMovie }) {
         />
         Movie Watched?
       </label>
+
       <button type="submit">Add</button>
     </form>
   );

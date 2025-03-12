@@ -26,7 +26,7 @@ function App() {
   // Fetch movies from Firebase
   useEffect(() => {
     const fetchMovies = async () => {
-      const moviesCollection = collection(firestore, "movies"); // Firestore collection name
+      const moviesCollection = collection(firestore, "movies");
       const movieSnapshot = await getDocs(moviesCollection);
       const movieList = movieSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
       setMovies(movieList);
@@ -34,18 +34,19 @@ function App() {
 
     fetchMovies();
   }, []);
-  
+
   // Function to add a new movie to the list
   const addMovie = (newMovie) => {
     setMovies((prevMovies) => [...prevMovies, newMovie]);
   };
-  //`
-  const uniqueGenres = [...new Set(MOVIES.map(movie => movie.genre))];
+
+  // Ensure genres update dynamically
+  const uniqueGenres = [...new Set(MOVIES.flatMap(movie => movie.genres || []))];
 
   return (
     <div className="App">
       <Header genres={uniqueGenres} selectedGenre={selectedGenre} setSelectedGenre={setSelectedGenre} />
-      <ParentContainer movies={MOVIES} addMovie={addMovie} selectedGenre={selectedGenre}/>
+      <ParentContainer movies={MOVIES} addMovie={addMovie} selectedGenre={selectedGenre} />
     </div>
   );
 }
