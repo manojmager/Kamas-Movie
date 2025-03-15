@@ -12,7 +12,7 @@ function AddMovieContainer({ addMovie }) {
   const [name, setName] = useState("");
   const [genres, setGenres] = useState([]); // Store multiple genres
   const [watched, setWatched] = useState(false);
-  const [inputValue, setInputValue] = useState(""); // Handle manual input
+  // const [inputValue, setInputValue] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -35,7 +35,7 @@ function AddMovieContainer({ addMovie }) {
       setName("");
       setGenres([]);
       setWatched(false);
-      setInputValue("");
+      // setInputValue("");
     } catch (error) {
       console.error("Error adding document: ", error);
     }
