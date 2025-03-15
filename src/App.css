@@ -1,12 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
 :root {
   --color-black-secondary: #212427;
-  --color-gray: #262626;
+  --color-gray: #52565A;
   --color-white: #FFFFFF;
   --color-primary: #E1DFDD;
   --color-accent: #5f9ea0;
 
   --text-primary: 'Work Sans', sans-serif;
   --text-sec: Orbitron, sans-serif;
+  --text-huge: 18px;
   --text-medium: 12.5px;
   --text-small: 10.5px;
 }
@@ -31,23 +33,31 @@ body {
     color: var(--color-white);
 }
 
-.App {
-  text-align: center;
-  display: flex;
-  flex-direction: column;
+/* ============================= */
+
+.auth-container{
+  text-align: left;
 }
 
-.full-screen-container {
-  height: 80vh;
-  overflow: auto;
+.login-container, .logged-in-container{
+  width: fit-content;
+  margin-left: 30px;
 }
 
-.form-add-movie{
-  display: flex;
-  flex-direction: column;
-  padding: 20px;
+.logged-in-container{
+  padding: 5px 0px 5px 0px;
+  text-transform: uppercase;
+  font-size: var(--text-huge);
+  font-weight: bolder;
+  font-family: var(--text-sec);
 }
-.form-add-movie > * {
-  padding: 0.5rem;
-  margin-bottom: 1rem;
+
+.login-container{
+  padding: 10px 10px;
+}
+
+input, button{
+  background: var(--color-primary);
+  padding: 2px;
+  font-weight: 300;
 }

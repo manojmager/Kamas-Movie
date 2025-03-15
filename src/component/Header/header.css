@@ -1,4 +1,4 @@
-.App-header {
+.app-header {
     position: relative;
     display: flex;
     flex-direction: row;
@@ -16,7 +16,7 @@
     object-position: center 60%;
     display: block;
     border-radius: 30px;
-    margin: 20px;
+    margin: 0px 20px 20px 20px;
 }
 
 .dropbox-container {

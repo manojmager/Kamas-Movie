@@ -1,0 +1,8 @@
+.full-screen-container {
+    height: 80vh;
+    overflow: auto;
+}
+
+.add-movie-container{
+    padding: 5rem;
+}

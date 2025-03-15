@@ -20,11 +20,16 @@ function AddMovieContainer({ addMovie }) {
       alert("Please enter a movie name and select at least one genre!");
       return;
     }
-
+    const username = localStorage.getItem("username"); // Get logged-in user
+    if (!username) {
+      alert("No user found. Please log in.");
+      return;
+    }
+  
     const newMovie = { name, genres, watched };
 
     try {
-      const docRef = await addDoc(collection(firestore, "movies"), newMovie);
+      const docRef = await addDoc(collection(firestore, "users", username, "movies"), newMovie);
       console.log("Document written with ID: ", docRef.id);
       addMovie({ ...newMovie, id: docRef.id }); // Add to local state
       setName("");
@@ -62,7 +67,7 @@ function AddMovieContainer({ addMovie }) {
             {genre} <button type="button" onClick={() => handleRemoveGenre(genre)}>x</button>
           </span>
         ))}
-        <input
+        {/* <input
           type="text"
           placeholder="Type or select a genre..."
           value={inputValue}
@@ -74,7 +79,7 @@ function AddMovieContainer({ addMovie }) {
               setInputValue("");
             }
           }}
-        />
+        /> */}
       </div>
 
       {/* Genre Selection Buttons */}

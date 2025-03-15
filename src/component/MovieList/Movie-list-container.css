@@ -12,16 +12,16 @@
   .watched-container h1 {
     margin-left: 10px;
     padding-bottom: 5px;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid var(--color-gray);
     margin-bottom: 10px;
   }
   
   .want-to-watch-container button {
     margin-left: 10px;
     margin-bottom: 10px;
-    background-color: #0056b3;
+    background: none;
     color: #fff;
-    border: none;
+    border-color: var(--color-gray);
     padding: 8px 12px;
     border-radius: 4px;
     cursor: pointer;
@@ -29,7 +29,7 @@
   }
   
   .want-to-watch-container button:hover {
-    background-color: #007BFF;
+    background-color: #921224;
   }
   .want-to-watch-container, .watched-container{
     text-align: left;
@@ -45,4 +45,24 @@
   .want-to-watch-container ul li,
   .watched-container ul li{
     line-height: 1.5;
+  }
+
+  .empty-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+    text-align: center;
+    color: white;
+    font-size: 16px;
+    padding: 20px;
+    border: 2px dashed var(--color-gray);
+    border-radius: 10px;
+    margin-top: 20px;
+  }
+
+  .list-item{
+    text-transform: capitalize;
+    padding: .1em;
+    border-radius: 5px;
   }

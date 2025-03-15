@@ -2,7 +2,7 @@ import './header.css';
 
 function Header({ genres, selectedGenre, setSelectedGenre }) {
     return (
-        <header className="App-header">
+        <header className="app-header">
             <img 
                 className="header-img" 
                 src="https://images.pexels.com/photos/12616961/pexels-photo-12616961.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
