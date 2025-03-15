@@ -19,9 +19,8 @@
   .want-to-watch-container button {
     margin-left: 10px;
     margin-bottom: 10px;
-    background: none;
+    background-color: #921224;
     color: #fff;
-    border-color: var(--color-gray);
     padding: 8px 12px;
     border-radius: 4px;
     cursor: pointer;
@@ -29,7 +28,7 @@
   }
   
   .want-to-watch-container button:hover {
-    background-color: #921224;
+    background-color: #D70654;
   }
   .want-to-watch-container, .watched-container{
     text-align: left;

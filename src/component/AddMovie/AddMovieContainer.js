@@ -105,7 +105,7 @@ function AddMovieContainer({ addMovie }) {
         Movie Watched?
       </label>
 
-      <button type="submit">Add</button>
+      <button type="submit" className="addMovieBtn">Add</button>
     </form>
   );
 }

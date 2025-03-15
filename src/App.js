@@ -56,7 +56,7 @@ function App() {
               value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}
             />
-            <button
+            <button className='loginButton'
               onClick={handleLoginSubmit}>Login
             </button> 
           </div>) : <div className='logged-in-container'>@ {username}</div>}

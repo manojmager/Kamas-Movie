@@ -21,7 +21,7 @@
   }
   
   .tag {
-    background-color: #007BFF;
+    background-color: #921224;
     color: white;
     padding: 5px 8px;
     border-radius: 10px;
@@ -54,6 +54,12 @@
   }
   
   .genre-buttons button.selected {
-
-    color: #007BFF;
+    color: #921224;
   }  
+
+  .addMovieBtn{
+    background-color: #921224;
+    color: var(--color-white);
+    font-weight: bold;
+    border-radius: 5px;
+  }
